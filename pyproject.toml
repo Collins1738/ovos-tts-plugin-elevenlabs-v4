@@ -1,0 +1,45 @@
+[build-system]
+requires = ["setuptools>=61", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ovos-tts-plugin-elevenlabs-v4"
+version = "0.1.0"
+description = "Streaming ElevenLabs v4 Turbo text-to-speech plugin for OpenVoiceOS"
+readme = "README.md"
+requires-python = ">=3.9"
+license = "Apache-2.0"
+authors = [
+    {name = "Collins1738"}
+]
+keywords = ["mycroft", "ovos", "plugin", "tts", "elevenlabs", "streaming"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3",
+]
+dependencies = [
+    "ovos-plugin-manager>=2.1.1,<3.0.0",
+    "httpx>=0.27,<1",
+]
+
+[project.optional-dependencies]
+test = [
+    "pytest>=8,<10",
+]
+
+[project.urls]
+Homepage = "https://github.com/Collins1738/ovos-tts-plugin-elevenlabs-v4"
+
+[project.scripts]
+ovos-elevenlabs-voice = "ovos_tts_plugin_elevenlabs_v4.voices:main"
+
+[project.entry-points."opm.tts"]
+"ovos-tts-plugin-elevenlabs-v4" = "ovos_tts_plugin_elevenlabs_v4:ElevenLabsV4TTS"
+
+[project.entry-points."opm.tts.config"]
+"ovos-tts-plugin-elevenlabs-v4.config" = "ovos_tts_plugin_elevenlabs_v4:ElevenLabsV4TTSConfig"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["ovos_tts_plugin_elevenlabs_v4*"]
